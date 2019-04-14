@@ -2,6 +2,9 @@
     'use strict';
     const userController = require('../controllers').UserController;
     const creditInfoController = require('../controllers').CreditInfoController;
+    const jwt = require('jsonwebtoken');
+    const config = require('./../../config/config');
+    const User = require('./../models/users');
 
     function routes(express){
         var router = express.Router();// get an instance of the express Router
@@ -16,7 +19,7 @@
             var token = req.body.token || req.query.token || req.headers['authorization'];
 
             if (token) {
-                jwt.verify(token, config.SECRET, function(err, decoded) {
+                jwt.verify(token.split('Bearer ')[1], config.SECRET, function(err, decoded) {
                     if (err) {
                         return res.status(401).json({
                             message: 'failed authentication: invalid token'

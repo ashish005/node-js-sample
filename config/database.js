@@ -1,10 +1,10 @@
 var Promise = require('promise');
 var config = require('./config');
-const { Pool }  = require('pg');
+const { Pool } = require('pg')
 const connectionString = config.DATABASE_URL;
-
-const pool = new Pool(connectionString);
-
+const pool = new Pool({
+    connectionString: connectionString
+});
 
 module.exports = {
     query: function(text, values) {
@@ -26,19 +26,22 @@ module.exports = {
             //         }
             //     });
             // });
-            pool.query(text, values, function(err, result) {
-                if (err) {
-                    handleErrorMessages(err)
-                        .then(function(message) {
-                            reject(message);
-                        })
-                        .catch(function() {
-                            reject();
-                        });
-                }
-                else {
-                    resolve(result);
-                }
+            pool.connect(function(err, client, done) {
+                client.query(text, values, function(err, result) {
+                        done();
+                    if (err) {
+                        handleErrorMessages(err)
+                            .then(function(message) {
+                                reject(message);
+                            })
+                            .catch(function() {
+                                reject();
+                            });
+                    }
+                    else {
+                        resolve(result);
+                    }
+                });
             });
         });
     }

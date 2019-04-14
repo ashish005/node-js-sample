@@ -1,0 +1,12 @@
+<h1>Hi {{currentUser.email}}!</h1>
+<p>You're logged in with Angular 6!!</p>
+<h3>All registered users:</h3>
+<ul>
+  <li *ngFor="let user of users">
+    {{user.email}}
+
+    <input type="number"> <button type="button" (click)="updateFirebaseCredit(user)">Firebase</button>
+    <input type="number"> <button type="button" (click)="updateDatabaseCredit(user)">Database</button>
+  </li>
+</ul>
+<p><a [routerLink]="['/login']">Logout</a></p>

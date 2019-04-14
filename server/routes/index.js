@@ -26,7 +26,7 @@
         router.get('/', viewRouter.bind(null, { path:'index', title: 'Default' }));
         router.get('/login', viewRouter.bind(null, { path:'login', title: 'Login' }));
         router.get('/signup', viewRouter.bind(null, { path:'signup', title: 'signup' }));
-        router.get('/users', isAuthenticated, viewRouter.bind(null, { path:'users', title: 'users' }));
+        router.get('/user', isAuthenticated, viewRouter.bind(null, { path:'users', title: 'users' }));
 
         return router;
     }
