@@ -1,6 +1,6 @@
-const CreditInfo = require('./credit-info');
-const User = require('./user');
+const CreditInfoController = require('./credit-info.controller');
+const UserController = require('./user.controller');
 
 module.exports = {
-    CreditInfo, User
+    CreditInfoController, UserController
 };

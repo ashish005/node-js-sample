@@ -1,15 +1,15 @@
-const CreditInfo = require('../models').CreditInfo;
+const CreditInfoController = require('../models').CreditInfo;
 
 module.exports = {
     list(req, res) {
-        return CreditInfo
+        return CreditInfoController
             .findAll({})
             .then((info) => res.status(200).send(info))
             .catch((error) => { res.status(400).send(error); });
     },
 
     getById(req, res) {
-        return CreditInfo
+        return CreditInfoController
             .findById(req.params.id, {})
             .then((creditInfo) => {
                 if (!creditInfo) {
@@ -23,7 +23,7 @@ module.exports = {
     },
 
     add(req, res) {
-        return CreditInfo
+        return CreditInfoController
             .create({
                 firebase_credit: req.body.firebase_credit,
                 database_credit: req.body.database_credit
@@ -33,7 +33,7 @@ module.exports = {
     },
 
     update(req, res) {
-        return CreditInfo
+        return CreditInfoController
             .findById(req.params.id)
             .then(creditInfo => {
                 if (!creditInfo) {
@@ -53,7 +53,7 @@ module.exports = {
     },
 
     delete(req, res) {
-        return CreditInfo
+        return CreditInfoController
             .findById(req.params.id)
             .then(data => {
                 if (!data) {

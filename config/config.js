@@ -1,0 +1,1 @@
+module.exports = require('./environments/development.js')// + process.env.NODE_ENV + '.js'

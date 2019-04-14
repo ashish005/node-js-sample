@@ -6,7 +6,7 @@ block content
     p.lead
       | Sign in with your account. Don’t have one?
       a(href='/signup')  Register Now.
-      form(role='form', action='/login', method='post')
+      form(role='form', action='/auth/login', method='post')
         .form-group
           label(for='username') Username
           input.form-control(type='text', id='user', name='username', placeholder='enter a username')

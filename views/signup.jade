@@ -5,10 +5,10 @@ block content
     h1 Registration
     p.lead Create an account. Already have one?
       a(href='/login')  Login Now.
-    form(role='form', action='/register', method='post')
+    form(role='form', action='/auth/register', method='post')
       .form-group
-        label(for='username') Username
-        input.form-control(type='text', id='username', name='username', placeholder='enter a username')
+        label(for='email') Email
+        input.form-control(type='text', id='email', name='email', placeholder='enter email')
       .form-group
         label(for='password') Password
         input.form-control(type='password', id='password', name='password', placeholder='enter a password')
