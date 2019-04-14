@@ -27,7 +27,6 @@ module.exports = {
             //     });
             // });
             pool.query(text, values, function(err, result) {
-                done();
                 if (err) {
                     handleErrorMessages(err)
                         .then(function(message) {
